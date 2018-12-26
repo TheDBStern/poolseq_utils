@@ -28,9 +28,9 @@ with open(args.input, 'rU') as f:
 			start = snp_pos - int(args.wsize / 2)
 			end = snp_pos + int(args.wsize / 2)
 		if cur_win == []:  # Just to account for the first line
-			cur_win = [int(line.split('\t')[0]),start,end, 1]
+			cur_win = [line.split('\t')[0],start,end, 1]
 		else:
-			if start < cur_win[2] and int(line.split('\t')[0]) == cur_win[0]: # If overlap and on same chromosome
+			if start < cur_win[2] and line.split('\t')[0] == cur_win[0]: # If overlap and on same chromosome
 				cur_win[2] = end
 				cur_win[3] += 1
 			else:
@@ -38,6 +38,6 @@ with open(args.input, 'rU') as f:
 					length = cur_win[2] - cur_win[1]
 					outfile.write('%s\t%s\t%s\tRegion%s\t%s\t%s\n'%(cur_win[0],cur_win[1],cur_win[2],count,length,cur_win[3]))
 					count += 1
-					cur_win = [int(line.split('\t')[0]),start,end, 1]
+					cur_win = [line.split('\t')[0],start,end, 1]
 				else: # If no overlap and not enough SNPs in last window, this becomes current window
-					cur_win = [int(line.split('\t')[0]),start,end, 1]
+					cur_win = [line.split('\t')[0],start,end, 1]
