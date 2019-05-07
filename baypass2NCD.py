@@ -28,8 +28,8 @@ with open(args.input,'rU') as f:
 		ID = scafnum+'|'+pos
 		for pop in range(0,args.numPops*2,2):
 			output = open('pop'+str(pcount)+'/'+str(scaf), 'a')
-			c1 = int(line.split(' ')[pop+2]) # get first allele count for each pop
-			c2 = int(line.split(' ')[pop+3]) # second allele count
+			c1 = int(line.split(' ')[pop+5]) # get first allele count for each pop
+			c2 = int(line.split(' ')[pop+6]) # second allele count
 			tot = c1 + c2
 			AF1 = round(c1/tot,4)
 			AF2 = round(c2/tot,4)
