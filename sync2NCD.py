@@ -18,9 +18,6 @@ parser.add_argument('-maf', dest = 'maf', type = float, required=True,  help = '
 
 args = parser.parse_args()
 
-if not os.path.isdir("./fixed_differences"):
-	os.mkdir("./fixed_differences")
-
 sync_dict = {0:'A',1:'T',2:'C',3:'G'}
 
 
