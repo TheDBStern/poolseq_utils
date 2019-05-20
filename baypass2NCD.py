@@ -8,6 +8,8 @@ import numpy
 parser = argparse.ArgumentParser(description='Script to convert a file from multipopulation BayPass format (Scaffold position genome ref alt refcount1 altcount1 etc.) to NCD format. Splits by chromosome and population')
 parser.add_argument('-i', dest = 'input', type = str, required=True,  help = 'input file')
 parser.add_argument('-n', dest = 'numPops', type = int, required=True,  help = 'number of populations')
+parser.add_argument('-maf', dest = 'maf', type = float, required=True,  help = 'minimum MAF for a SNP to include')
+
 
 ## NCD Format: CHR POS ID REF ALT AF1 AF2 AF3 MAF
 
@@ -35,5 +37,8 @@ with open(args.input,'rU') as f:
 			AF2 = round(c2/tot,4)
 			AF3 = "NA"
 			MAF = min(AF1,AF2)
-			output.write(str(scafnum)+'\t'+str(pos)+'\t'+str(ID)+'\t'+str(ref)+'\t'+str(alt)+'\t'+str(AF1)+'\t'+str(AF2)+'\t'+str(AF3)+'\t'+str(MAF)+'\n')
-			pcount +=1
+			if MAF > args.maf:
+				output.write(str(scafnum)+'\t'+str(pos)+'\t'+str(ID)+'\t'+str(ref)+'\t'+str(alt)+'\t'+str(AF1)+'\t'+str(AF2)+'\t'+str(AF3)+'\t'+str(MAF)+'\n')
+				pcount +=1
+			else:
+				pcount +=1
