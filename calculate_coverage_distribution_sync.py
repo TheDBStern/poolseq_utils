@@ -19,6 +19,9 @@ def file_len(fname):
 print("Calculating file length")
 flen = file_len(args.input)
 print("Done")
+
+print("Calculating maximum coverage cutoffs from the empirical distributions of coverages")
+
 cov_dat = []
 pbar = progressbar.ProgressBar(maxval=int(flen))
 pbar.start()
@@ -30,9 +33,9 @@ with open(args.input,'rU') as f:
 		for pop in popdat:
 			cov = sum(map(int,pop.split(':')))
 			cov_dat.append(cov)
+			print(cov)
 		time.sleep(0.05)
 		pbar.update(i+1)
-		i +=1
 pbar.finish()
 
 cov_dat = np.array(cov_dat)
