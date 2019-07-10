@@ -5,7 +5,7 @@ import numpy as np
 
 parser = argparse.ArgumentParser(description='Script to calculate the top X percentage of coverage across all pools')
 parser.add_argument('-i', dest = 'input', type = str, required=True,  help = 'input sync file')
-parser.add_argument('-q', dest = 'quantile', type = float, required=True,  help = 'coverage percentage to calculate (e.g. 0.99 will calculate coverage at top 99% of sites')
+parser.add_argument('-q', dest = 'quantile', type = float, required=True,  help = 'coverage percentile to calculate (e.g. 0.99 will calculate coverage at top 99%% of sites')
 
 args = parser.parse_args()
 
@@ -18,5 +18,5 @@ with open(args.input,'rU') as f:
 			cov_dat.append(cov)
 
 cov_dat = np.array(cov_dat)
-top_cov = np.quantile(cov_dat, args.quantile,interpolation="nearest")
+top_cov = int(np.quantile(cov_dat, args.quantile,interpolation="nearest"))
 print("Result: 'max-coverage %s' is equivalent to 'max-coverage %s'\n"%(args.quantile,top_cov))
