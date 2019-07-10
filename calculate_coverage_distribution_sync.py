@@ -33,7 +33,6 @@ with open(args.input,'rU') as f:
 		for pop in popdat:
 			cov = sum(map(int,pop.split(':')))
 			cov_dat.append(cov)
-			print(cov)
 		time.sleep(0.05)
 		pbar.update(i+1)
 pbar.finish()
