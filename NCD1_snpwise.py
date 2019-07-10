@@ -6,7 +6,7 @@ import argparse
 import math
 import os
 
-## Code borrowed from Siewert et al. 2018
+## Code adapted from Siewert et al. 2018
 def find_win_indx(prevStarti, prevEndi, SNPi, dataList, winSize):
 	locSNP = dataList[SNPi,0] #the coordinates of the core SNP
 	winStart = locSNP-winSize/2
@@ -53,6 +53,8 @@ def main():
 		print sys.exit("Error: Input file in wrong format")
 	if args.m<0 or args.m>.5:
 		print sys.exit("Error: Parameter m must be between 0 and 0.5.")
+	if len(SNPs.shape)<=1:
+		print sys.exit("Error: There must be at least two SNPs in the input file.")
 
 
 	prevStarti = 0
