@@ -6,7 +6,7 @@ import argparse
 import math
 import os
 
-## Code adapted from Siewert et al. 2018 to calculate NCD1 statistic from Bitarello et al. 2018
+## Code adapted from Siewert et al. 2018 to calculate NCD statistic from Bitarello et al. 2018
 def find_win_indx(prevStarti, prevEndi, SNPi, dataList, winSize):
 	locSNP = dataList[SNPi,0] #the coordinates of the core SNP
 	winStart = locSNP-winSize/2
@@ -16,7 +16,7 @@ def find_win_indx(prevStarti, prevEndi, SNPi, dataList, winSize):
 	return(firstI,endI)
 
 
-def calc_NCD1(SNPFreqList, tf):
+def calc_NCD(SNPFreqList, tf):
 	NCDnum = 0
 	for i in range(len(SNPFreqList)):
 		freq = float(SNPFreqList[i,0]) / int(SNPFreqList[i,1])
@@ -73,10 +73,10 @@ def main():
 			prevEndi = endI
 			if endI>sI:
 				SNPSet = np.take(SNPs,range(sI,SNPi+1)+range(SNPi+1,endI+1),axis=0)[:,1:] # adjusted to include core SNP
-				NCD1_tf5 = calc_NCD1(SNPSet,0.5)
-				NCD1_tf4 = calc_NCD1(SNPSet,0.4)
-				NCD1_tf3 = calc_NCD1(SNPSet,0.3)
-				output.write(str(loc)+"\t"+str(NCD1_tf5)+"\t"+str(NCD1_tf4)+"\t"+str(NCD1_tf3)+"\n")
+				NCD_tf5 = calc_NCD(SNPSet,0.5)
+				NCD_tf4 = calc_NCD(SNPSet,0.4)
+				NCD_tf3 = calc_NCD(SNPSet,0.3)
+				output.write(str(loc)+"\t"+str(NCD_tf5)+"\t"+str(NCD_tf4)+"\t"+str(NCD_tf3)+"\n")
 
 		elif freq>1.0 or freq<0:
 			print sys.exit("Error: Input file contains SNP of invalid frequency on line "+str(SNPi)+".")
