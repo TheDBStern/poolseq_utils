@@ -6,7 +6,7 @@ import argparse
 import math
 import os
 
-## Code adapted from Siewert et al. 2018
+## Code adapted from Siewert et al. 2018 to calculate NCD1 statistic from Bitarello et al. 2018
 def find_win_indx(prevStarti, prevEndi, SNPi, dataList, winSize):
 	locSNP = dataList[SNPi,0] #the coordinates of the core SNP
 	winStart = locSNP-winSize/2
