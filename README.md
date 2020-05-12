@@ -1,5 +1,5 @@
 # poolseq_utils
-Scripts to manipulate allele frequency files used in PoolSeq analyses, specifically for 'Balancing selection in the native range promotes parallel adaptation during invasions.' All scripts have some description and help info accessible with -h or --help.
+Scripts to handle allele frequency files used in PoolSeq analyses. All scripts have some description and help info accessible with -h or --help.
 
 * NCD_snpwise.py Calculates NCD scores (Bitarello et al. 2018) on a per-snp (rather than genomic window) basis, similar to BetaScan (Siewert & Voight 2017)
 * baypass2bayescan.py Creates BayeScan formatted input files from the 'genobaypass' output file generated in poolfstat
