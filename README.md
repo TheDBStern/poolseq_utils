@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/150316034.svg)](https://zenodo.org/badge/latestdoi/150316034)
+
 # poolseq_utils
 Scripts to process allele frequency files used in PoolSeq analyses. All scripts have some description and help info accessible with -h or --help.
 
